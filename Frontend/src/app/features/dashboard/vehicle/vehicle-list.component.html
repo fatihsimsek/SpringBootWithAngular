@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <th scope="row">{{i}}</th>
+        <td>{{item.model}}</td>
+        <td>{{item.brand}}</td>
+      </tr>
+    </tbody>
+  </table>

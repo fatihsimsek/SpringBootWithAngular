@@ -4,11 +4,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 
 import { MainLayoutComponent } from './main-layout.component';
 import { HeaderComponent } from './header.component';
+import { VehicleListComponent } from './vehicle/vehicle-list.component';
+import { PhoneListComponent } from './phone/phone-list.component';
 
 @NgModule({
   declarations: [
     MainLayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    VehicleListComponent,
+    PhoneListComponent
   ],
   imports: [
     SharedModule,
