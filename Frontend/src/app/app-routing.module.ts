@@ -5,18 +5,18 @@ const routes: Routes = [
   {
     path: "", pathMatch: 'full', redirectTo: '/authentication/login' 
   },
-  {
-    path: "home", loadChildren: "./features/dashboard/dashboard.module#DashboardModule",
-  },
+  /*{
+    path: "dashboard", loadChildren: "./features/dashboard/dashboard.module#DashboardModule",
+  },*/
   {
     path: "authentication", loadChildren: "./features/authentication/authentication.module#AuthenticationModule",
   },
-  {
+  /*{
     path: "miscellaneous", loadChildren: "./features/miscellaneous/miscellaneous.module#MiscellaneousModule",
   },
   { 
     path: "**", redirectTo: "miscellaneous/error404" 
-  }
+  }*/
 ];
 
 @NgModule({

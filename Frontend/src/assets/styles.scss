@@ -1,0 +1,147 @@
+input {
+    outline: none;
+    border: none;
+}
+
+label {
+    display: block;
+    margin: 0;
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.input-checkbox100 {
+    display: none;
+}
+
+.label-checkbox100 {
+    font-family: Raleway-Regular;
+    font-size: 13px;
+    color: #999;
+    line-height: 1.4;
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    cursor: pointer;
+}
+
+.btn-show-pass {
+    font-size: 15px;
+    color: #999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 12px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.p-r-85 {
+    padding-right: 85px;
+}
+.p-l-85 {
+    padding-left: 85px;
+}
+.p-b-55 {
+    padding-bottom: 55px;
+}
+.p-t-55 {
+    padding-top: 55px;
+}
+
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-w {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-sb-m {
+    display: flex;
+    justify-content: space-between;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+.p-b-32 {
+    padding-bottom: 32px;
+}
+
+.p-b-48 {
+    padding-bottom: 48px;
+}
+
+.p-t-32 {
+    padding-top: 32px;
+}
+
+.p-t-48 {
+    padding-top: 48px;
+}
+
+.p-b-11 {
+    padding-bottom: 11px;
+}
+
+.validate-input {
+    position: relative;
+}
+
+.wrap-input100 {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+}
+
+.m-b-36 {
+    margin-bottom: 36px;
+}
+
+.p-b-48 {
+    padding-bottom: 48px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.input100 {
+    font-family: Raleway-Medium;
+    color: #555;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    background: 0 0;
+    height: 55px;
+    padding: 0 25px;
+}
+
+.focus-input100 {
+    position: absolute;
+    display: block;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    top: -1px;
+    left: -1px;
+    pointer-events: none;
+    border: 1px solid #57b846;
+    border-radius: 3px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+
