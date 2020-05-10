@@ -2,39 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
-  private userModel : any;
-  private isValidAuth = false;
+  private tokenModel = null;
 
   constructor(private http: HttpClient, 
               private router: Router) { }
 
-  login(userId: string, password: string) {
-    return this.http.post<any>("",
+  login(email: string, password: string) {
+    return this.http.post<any>(environment.apiUrl + "auth/signin",
       {
-        UserName: userId, 
-        Password: password
+        email: email, 
+        password: password
       }).pipe(map((response => {
-        this.isValidAuth = response.IsSuccess;
-        if(this.isValidAuth){
-          this.setModel(response);
-        }
+        this.setToken(response);
         return response;
       })));
   }
 
   isAuthenticated(): boolean {
-    return this.isValidAuth;
+    return this.tokenModel != null;
   }
 
-  setModel(userModel: any) {
-    this.userModel = userModel;
+  setToken(tokenModel: any) {
+    this.tokenModel = tokenModel;
   }
 
   logout(){
-    this.isValidAuth = false;
+    this.tokenModel = null;
     this.router.navigateByUrl('/');
   }
 }
