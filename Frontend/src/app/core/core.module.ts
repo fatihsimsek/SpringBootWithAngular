@@ -6,6 +6,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthenticationService } from './services/authentication.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { GlobalErrorHandler } from './global-error-handler';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [],
@@ -18,6 +19,7 @@ import { GlobalErrorHandler } from './global-error-handler';
     AuthenticationGuard,
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ]
 })

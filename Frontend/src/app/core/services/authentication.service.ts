@@ -26,6 +26,10 @@ export class AuthenticationService {
     return this.tokenModel != null;
   }
 
+  getToken() {
+    return this.isAuthenticated() ? this.tokenModel.accessToken : null;
+  }
+
   setToken(tokenModel: any) {
     this.tokenModel = tokenModel;
   }
