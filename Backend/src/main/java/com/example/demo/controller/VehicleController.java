@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.example.demo.service.VehicleService;
 
 @RestController
 @RequestMapping("/vehicle")
+@CrossOrigin
 public class VehicleController {
 	
 	private VehicleService vehicleService;
@@ -23,7 +25,7 @@ public class VehicleController {
         this.setVehicleService(vehicleService);
     }
 	
-	@RequestMapping("/all")
+	@RequestMapping("/list")
 	public List<Vehicle> getAll() {
 		return getVehicleService().getAll();
 	}
