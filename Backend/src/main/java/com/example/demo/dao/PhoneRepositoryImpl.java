@@ -38,8 +38,11 @@ public class PhoneRepositoryImpl implements PhoneRepository {
 		String id = phone.getId();	
 		if(StringUtils.isEmpty(id)) {
 			phone.setId(UUID.randomUUID().toString());
+			entityManager.persist(phone);
 		}
-		entityManager.merge(phone);
+		else {
+			entityManager.merge(phone);
+		}
 	}
 
 }

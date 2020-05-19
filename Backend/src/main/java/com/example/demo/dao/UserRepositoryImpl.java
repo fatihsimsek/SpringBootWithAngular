@@ -55,9 +55,11 @@ public class UserRepositoryImpl implements UserRepository{
 		
 		if(StringUtils.isEmpty(id)) {
 			user.setId(UUID.randomUUID().toString());
+			entityManager.persist(user);
 		}
-		
-		entityManager.merge(user);
+		else {
+			entityManager.merge(user);
+		}
 	}
 
 }

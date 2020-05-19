@@ -39,9 +39,11 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 		
 		if(StringUtils.isEmpty(id)) {
 			vehicle.setId(UUID.randomUUID().toString());
+			entityManager.persist(vehicle);
 		}
-
-		entityManager.merge(vehicle);
+		else {
+			entityManager.merge(vehicle);
+		}
 	}
 
 }

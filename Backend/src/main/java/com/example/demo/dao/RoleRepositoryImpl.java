@@ -49,9 +49,11 @@ public class RoleRepositoryImpl implements RoleRepository {
 
 		if(StringUtils.isEmpty(id)) {
 			role.setId(UUID.randomUUID().toString());
+			entityManager.persist(role);
 		}
-		
-		entityManager.merge(role);
+		else {
+			entityManager.merge(role);
+		}
 	}
 
 }
