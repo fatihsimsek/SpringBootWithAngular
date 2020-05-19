@@ -5,12 +5,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.example.demo.model.Vehicle;
@@ -21,48 +20,28 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 	@Autowired	
 	private EntityManager entityManager;
 	
-	private Session getSession() {
-        return entityManager.unwrap(Session.class);
-    }
-	
 	@Override
 	public List<Vehicle> findAll() {
-		try(Session currentSession = getSession()) {
-			Query<Vehicle> query = currentSession.createQuery("from Vehicle", Vehicle.class);
-			return query.list();
-		}
+		TypedQuery<Vehicle> query = entityManager.createQuery("from Vehicle", Vehicle.class);
+		return query.getResultList();
 	}
 
 	@Override
 	public Optional<Vehicle> findById(String id) {
-		try(Session currentSession = getSession()) {
-			Vehicle vehicle = currentSession.get(Vehicle.class, id);
-			return Optional.of(vehicle);
-		}
+		Vehicle vehicle = entityManager.find(Vehicle.class, id);
+		return Optional.of(vehicle);
 	}
 
 	@Override
+	@Transactional
 	public void save(Vehicle vehicle) {
-		Transaction transaction = null;
 		String id = vehicle.getId();
 		
-		try(Session currentSession = getSession()) {
-			transaction = currentSession.beginTransaction();
-			
-			if(StringUtils.isEmpty(id)) {
-				vehicle.setId(UUID.randomUUID().toString());
-				currentSession.save(vehicle);
-			}
-			else {
-				currentSession.update(vehicle);
-			}
-			transaction.commit();
+		if(StringUtils.isEmpty(id)) {
+			vehicle.setId(UUID.randomUUID().toString());
 		}
-		catch(Exception exp) {
-			if(transaction != null) {
-				transaction.rollback();
-			}
-		}
+
+		entityManager.merge(vehicle);
 	}
 
 }
