@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class RoleService {
     }
 	
 	public List<Role> getAll() {
-		Iterable<Role> iterableRole = getRoleRepository().findAll();
+		Iterable<Role> iterableRole = this.roleRepository.findAll();
 
         List<Role> roles = new ArrayList<Role>();
         iterableRole.forEach(e -> roles.add(e));
@@ -28,18 +29,18 @@ public class RoleService {
 	}
 	
 	public Role getById(String id) {
-		return getRoleRepository().findById(id).get();
+		return this.roleRepository.findById(id).get();
 	}
 	
 	public void create(Role role) {
-		getRoleRepository().save(role);
-	}
-	
-	public RoleRepository getRoleRepository() {
-		return roleRepository;
+		this.roleRepository.save(role);
 	}
 
 	public void setRoleRepository(RoleRepository roleRepository) {
 		this.roleRepository = roleRepository;
+	}
+	
+	public Optional<Role> findByCode(String code) {
+		return this.roleRepository.findByCode(code);
 	}
 }

@@ -35,7 +35,7 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/create")
 	public void create(@RequestBody User user) {
-		getUserService().create(user);
+		getUserService().save(user);
 	}
 
 	public UserService getUserService() {

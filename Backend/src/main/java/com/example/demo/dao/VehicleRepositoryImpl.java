@@ -5,9 +5,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -17,7 +17,7 @@ import com.example.demo.model.Vehicle;
 @Repository
 public class VehicleRepositoryImpl implements VehicleRepository {
 
-	@Autowired	
+	@PersistenceContext	
 	private EntityManager entityManager;
 	
 	@Override
