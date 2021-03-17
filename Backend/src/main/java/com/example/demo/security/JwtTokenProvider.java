@@ -6,14 +6,20 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JwtTokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
+    
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
     @Value("${app.jwtSecret}")
     private String jwtSecret;
@@ -43,6 +49,12 @@ public class JwtTokenProvider {
                 .getBody();
 
         return claims.getSubject();
+    }
+    
+    public UsernamePasswordAuthenticationToken getAuthentication(String token) {
+		String userId = getUserIdFromJWT(token);
+    	UserDetails userDetails = customUserDetailsService.loadUserById(userId);
+		return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 
     public boolean validateToken(String authToken) {

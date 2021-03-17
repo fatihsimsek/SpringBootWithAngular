@@ -22,7 +22,7 @@ public class MessageQueueController {
 
     @PostMapping(value = "/publish")
     public void sendMessageToKafkaTopic(@RequestParam("message") String message) {
-        this.kafkaTemplate.send(TOPIC, message);
+       this.kafkaTemplate.send(TOPIC, message);
     }
     
     @KafkaListener(topics = TOPIC, groupId = groupId)
