@@ -5,6 +5,8 @@
 
 #Gradle temporary files
 target/
+applog/
+bin/
 
 #Eclipse files
 **/.project

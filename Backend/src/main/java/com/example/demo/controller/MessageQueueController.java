@@ -25,7 +25,7 @@ public class MessageQueueController {
        this.kafkaTemplate.send(TOPIC, message);
     }
     
-    @KafkaListener(topics = TOPIC, groupId = groupId)
+    //@KafkaListener(topics = TOPIC, groupId = groupId)
     public void listen(String message) {
         System.out.println("Received Messasge in group myConsumer: " + message);
     }
