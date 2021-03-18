@@ -26,6 +26,8 @@ import com.example.demo.security.JwtTokenProvider;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
@@ -47,6 +49,7 @@ public class AuthController {
     JwtTokenProvider tokenProvider;
 
     @PostMapping("/signin")
+    @ApiOperation(value = "Sign in")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest request) {
 
         Authentication authentication = authenticationManager.authenticate(
