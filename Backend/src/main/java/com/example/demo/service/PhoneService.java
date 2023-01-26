@@ -13,14 +13,13 @@ import com.example.demo.model.Phone;
 public class PhoneService {
 
 	private PhoneRepository phoneRepository;
-	 
-    @Autowired
+
     public PhoneService(PhoneRepository phoneRepository) {
-        this.setPhoneRepository(phoneRepository);
+        this.phoneRepository = phoneRepository;
     }
 	
 	public List<Phone> getAll() {
-		Iterable<Phone> iterablePhone = getPhoneRepository().findAll();
+		Iterable<Phone> iterablePhone = this.phoneRepository.findAll();
 
         List<Phone> phones = new ArrayList<Phone>();
         iterablePhone.forEach(e -> phones.add(e));
@@ -29,18 +28,10 @@ public class PhoneService {
 	}
 	
 	public Phone getById(String id) {
-		return getPhoneRepository().findById(id).get();
+		return this.phoneRepository.findById(id).get();
 	}
 	
 	public void create(Phone phone) {
-		getPhoneRepository().save(phone);
-	}
-	
-	public PhoneRepository getPhoneRepository() {
-		return phoneRepository;
-	}
-
-	public void setPhoneRepository(PhoneRepository phoneRepository) {
-		this.phoneRepository = phoneRepository;
+		this.phoneRepository.save(phone);
 	}
 }

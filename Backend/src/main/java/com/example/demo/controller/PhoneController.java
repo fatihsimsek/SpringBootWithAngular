@@ -19,32 +19,24 @@ import com.example.demo.service.PhoneService;
 public class PhoneController {
 	
 	private PhoneService phoneService;
-	 
-    @Autowired
+
     public PhoneController(PhoneService phoneService) {
-        this.setPhoneService(phoneService);
+		this.phoneService = phoneService;
     }
 	
 	@RequestMapping("/list")
 	public List<Phone> getAll() {
-		return getPhoneService().getAll();
+		return this.phoneService.getAll();
 	}
 	
 	@RequestMapping("/{id}")
 	public Phone getById(@PathVariable("id") String id) {
-		return getPhoneService().getById(id);
+		return this.phoneService.getById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/create")
 	public void create(@RequestBody Phone phone) {
-		getPhoneService().create(phone);
+		this.phoneService.create(phone);
 	}
 
-	public PhoneService getPhoneService() {
-		return phoneService;
-	}
-
-	public void setPhoneService(PhoneService phoneService) {
-		this.phoneService = phoneService;
-	}
 }

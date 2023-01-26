@@ -19,32 +19,24 @@ import com.example.demo.service.VehicleService;
 public class VehicleController {
 	
 	private VehicleService vehicleService;
-	 
-    @Autowired
+
     public VehicleController(VehicleService vehicleService) {
-        this.setVehicleService(vehicleService);
+        this.vehicleService = vehicleService;
     }
 	
 	@RequestMapping("/list")
 	public List<Vehicle> getAll() {
-		return getVehicleService().getAll();
+		return this.vehicleService.getAll();
 	}
 	
 	@RequestMapping("/{id}")
 	public Vehicle getById(@PathVariable("id") String id) {
-		return getVehicleService().getById(id);
+		return this.vehicleService.getById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/create")
 	public void create(@RequestBody Vehicle vehicle) {
-		getVehicleService().create(vehicle);
+		this.vehicleService.create(vehicle);
 	}
 
-	public VehicleService getVehicleService() {
-		return vehicleService;
-	}
-
-	public void setVehicleService(VehicleService vehicleService) {
-		this.vehicleService = vehicleService;
-	}
 }

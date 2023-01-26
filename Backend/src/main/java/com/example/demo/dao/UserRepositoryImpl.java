@@ -21,8 +21,11 @@ import com.example.demo.model.User;
 @Repository
 public class UserRepositoryImpl implements UserRepository{
 
-	@PersistenceContext	
 	private EntityManager entityManager;
+
+	public UserRepositoryImpl(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	
 	@Override
 	public List<User> findAll() {

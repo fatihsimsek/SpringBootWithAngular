@@ -16,9 +16,12 @@ import com.example.demo.model.Phone;
 
 @Repository
 public class PhoneRepositoryImpl implements PhoneRepository {
-	
-	@PersistenceContext	
+
 	private EntityManager entityManager;
+
+	public PhoneRepositoryImpl(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 
 	@Override
 	public List<Phone> findAll() {

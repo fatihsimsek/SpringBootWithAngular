@@ -15,10 +15,12 @@ public class MessageQueueController {
 	private static final String TOPIC = "my_topic";
 	
     private static final String groupId = "myConsumer";
-	
-	@Autowired
+
     private KafkaTemplate<String, String> kafkaTemplate;
 
+	public MessageQueueController(KafkaTemplate<String, String> kafkaTemplate) {
+	    this.kafkaTemplate = kafkaTemplate;
+    }
 
     @PostMapping(value = "/publish")
     public void sendMessageToKafkaTopic(@RequestParam("message") String message) {

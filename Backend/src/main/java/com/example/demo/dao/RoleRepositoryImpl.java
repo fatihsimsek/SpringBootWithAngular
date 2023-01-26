@@ -17,8 +17,11 @@ import com.example.demo.model.Role;
 @Repository
 public class RoleRepositoryImpl implements RoleRepository {
 
-	@PersistenceContext	
 	private EntityManager entityManager;
+
+	public RoleRepositoryImpl(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	
 	@Override
 	public List<Role> findAll() {

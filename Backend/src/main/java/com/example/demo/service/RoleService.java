@@ -13,10 +13,9 @@ import com.example.demo.model.Role;
 @Service
 public class RoleService {
 	private RoleRepository roleRepository;
-	 
-    @Autowired
+
     public RoleService(RoleRepository roleRepository) {
-        this.setRoleRepository(roleRepository);
+        this.roleRepository = roleRepository;
     }
 	
 	public List<Role> getAll() {
@@ -34,10 +33,6 @@ public class RoleService {
 	
 	public void create(Role role) {
 		this.roleRepository.save(role);
-	}
-
-	public void setRoleRepository(RoleRepository roleRepository) {
-		this.roleRepository = roleRepository;
 	}
 	
 	public Optional<Role> findByCode(String code) {

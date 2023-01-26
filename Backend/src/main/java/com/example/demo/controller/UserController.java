@@ -17,32 +17,23 @@ import com.example.demo.service.UserService;
 public class UserController {
 	
 	private UserService userService;
-	 
-    @Autowired
+
     public UserController(UserService userService) {
-        this.setUserService(userService);
+        this.userService = userService;
     }
 	
 	@RequestMapping("/all")
 	public List<User> getAll() {
-		return getUserService().getAll();
+		return this.userService.getAll();
 	}
 	
 	@RequestMapping("/{id}")
 	public User getById(@PathVariable("id") String id) {
-		return getUserService().getById(id);
+		return this.userService.getById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/create")
 	public void create(@RequestBody User user) {
-		getUserService().save(user);
-	}
-
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
+		this.userService.save(user);
 	}
 }

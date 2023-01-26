@@ -17,8 +17,11 @@ import com.example.demo.model.Vehicle;
 @Repository
 public class VehicleRepositoryImpl implements VehicleRepository {
 
-	@PersistenceContext	
 	private EntityManager entityManager;
+
+	public VehicleRepositoryImpl(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	
 	@Override
 	public List<Vehicle> findAll() {

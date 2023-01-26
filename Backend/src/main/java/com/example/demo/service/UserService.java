@@ -12,10 +12,9 @@ import com.example.demo.model.User;
 @Service
 public class UserService {
 	private UserRepository userRepository;
-	 
-    @Autowired
+
     public UserService(UserRepository userRepository) {
-        this.setUserRepository(userRepository);
+        this.userRepository = userRepository;
     }
 	
 	public List<User> getAll() {
@@ -35,10 +34,6 @@ public class UserService {
 		this.userRepository.save(user);
 	}
 
-	public void setUserRepository(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
-	
 	public boolean existsByEmail(String email) {
 		return this.userRepository.existsByEmail(email);
 	}

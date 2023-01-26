@@ -13,10 +13,9 @@ import com.example.demo.model.Vehicle;
 public class VehicleService {
 
 	private VehicleRepository vehicleRepository;
-	 
-    @Autowired
+
     public VehicleService(VehicleRepository vehicleRepository) {
-        this.setVehicleRepository(vehicleRepository);
+        this.vehicleRepository = vehicleRepository;
     }
 	
 	public List<Vehicle> getAll() {
@@ -40,7 +39,4 @@ public class VehicleService {
 		return vehicleRepository;
 	}
 
-	public void setVehicleRepository(VehicleRepository vehicleRepository) {
-		this.vehicleRepository = vehicleRepository;
-	}
 }

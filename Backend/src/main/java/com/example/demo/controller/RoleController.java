@@ -17,32 +17,23 @@ import com.example.demo.service.RoleService;
 public class RoleController {
 	
 	private RoleService roleService;
-	 
-    @Autowired
+
     public RoleController(RoleService roleService) {
-        this.setRoleService(roleService);
+        this.roleService = roleService;
     }
 	
 	@RequestMapping("/all")
 	public List<Role> getAll() {
-		return getRoleService().getAll();
+		return this.roleService.getAll();
 	}
 	
 	@RequestMapping("/{id}")
 	public Role getById(@PathVariable("id") String id) {
-		return getRoleService().getById(id);
+		return this.roleService.getById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/create")
 	public void create(@RequestBody Role role) {
-		getRoleService().create(role);
-	}
-
-	public RoleService getRoleService() {
-		return roleService;
-	}
-
-	public void setRoleService(RoleService roleService) {
-		this.roleService = roleService;
+		this.roleService.create(role);
 	}
 }

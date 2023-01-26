@@ -22,11 +22,14 @@ import com.example.demo.security.JwtTokenProvider;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
-    
-    @Autowired
+
     private JwtTokenProvider jwtTokenProvider;
+
+    public SecurityConfig(JwtTokenProvider jwtTokenProvider, JwtAuthenticationEntryPoint unauthorizedHandler) {
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.unauthorizedHandler = unauthorizedHandler;
+    }
     
     @Bean
 	@Override
