@@ -32,7 +32,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 	@Override
 	public Optional<Vehicle> findById(String id) {
 		Vehicle vehicle = entityManager.find(Vehicle.class, id);
-		return Optional.of(vehicle);
+		return Optional.ofNullable(vehicle);
 	}
 
 	@Override

@@ -32,7 +32,7 @@ public class RoleRepositoryImpl implements RoleRepository {
 	@Override
 	public Optional<Role> findById(String id) {
 		Role role = entityManager.find(Role.class, id);
-		return Optional.of(role);
+		return Optional.ofNullable(role);
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class RoleRepositoryImpl implements RoleRepository {
 
 		List<Role> roles = query.getResultList();
 		
-		return roles.size() > 0 ? Optional.of(roles.get(0)) : Optional.of(null);
+		return roles.size() > 0 ? Optional.of(roles.get(0)) : Optional.ofNullable(null);
 	}
 
 	@Override

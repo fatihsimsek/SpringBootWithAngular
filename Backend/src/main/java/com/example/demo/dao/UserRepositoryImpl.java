@@ -36,7 +36,7 @@ public class UserRepositoryImpl implements UserRepository{
 	@Override
 	public Optional<User> findById(String id) {
 		User user = entityManager.find(User.class, id);
-		return Optional.of(user);
+		return Optional.ofNullable(user);
 	}
 	
 	@Override
@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository{
 		
 		List<User> users = query.getResultList();
 		
-		return users.size() > 0 ? Optional.of(users.get(0)) : Optional.of(null);
+		return users.size() > 0 ? Optional.of(users.get(0)) : Optional.ofNullable(null);
 	}
 	
 	@Override
