@@ -42,7 +42,7 @@ public class RoleRepositoryImpl implements RoleRepository {
 
 		List<Role> roles = query.getResultList();
 		
-		return roles.size() > 0 ? Optional.of(roles.get(0)) : Optional.ofNullable(null);
+		return roles.size() > 0 ? Optional.of(roles.get(0)) : Optional.empty();
 	}
 
 	@Override

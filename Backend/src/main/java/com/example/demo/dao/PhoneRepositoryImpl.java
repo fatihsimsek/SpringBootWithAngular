@@ -32,7 +32,7 @@ public class PhoneRepositoryImpl implements PhoneRepository {
 	@Override
 	public Optional<Phone> findById(String id) {
 		Phone phone = entityManager.find(Phone.class, id);
-		return Optional.of(phone);
+		return Optional.ofNullable(phone);
 	}
 
 	@Override

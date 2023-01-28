@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository{
 		
 		List<User> users = query.getResultList();
 		
-		return users.size() > 0 ? Optional.of(users.get(0)) : Optional.ofNullable(null);
+		return users.size() > 0 ? Optional.of(users.get(0)) : Optional.empty();
 	}
 	
 	@Override
